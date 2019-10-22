@@ -1,0 +1,68 @@
+
+Agenda : 
+
+Yesterdays session recap:
+    1. Introduction
+    2. Course Introduction
+    3. DevOps Pre-Requisites
+    4. Git
+    5. Github 
+    6. Questions
+
+Course Introduction : 
+
+Course Name : DevOps Certification Training Course Online
+
+DevOps Certification Course Content
+
+Infrastructure Setup
+EC2 Walkthrough
+Installation of Devops Tools on cloud
+Git
+Docker
+Selenium
+Maven
+Jenkins
+Puppet
+Ansible
+Kubernetes
+Nagios
+
+Additional Topics from Me!
+
+# AWS Cloud 
+    1. VPC
+    2. Route53
+    3. S3
+    4. BootStrap
+    5. AWS CLI 
+
+# Jfrog Artifactory
+# SonarQube
+# Github
+
+DevOps Pre-Requisites :
+
+1. OS    : System Admin & Network Admin 
+2. Cloud : AWS, AZURE , GCP                 (AWS or AZURE or GCP) 
+# Foundational Level, Admin, Developer, Architect, Security, Network, BigData, AI, ML etc..
+
+3. Programming : Python, Java, .net 
+4. Scripting : Shell, powershell, python 
+5. SQL : Basics of SQL 
+6. Client Side Scripting : Html, css , js 
+7. SDLC - Agile 
+8. DevOps Tool Chain 
+
+
+4. Git : Download, Install and Configure Git on Windows/MacOS/Linux ;
+
+    https://git-scm.com
+
+
+
+VCS / SCM : 
+
+5. Github :
+
+https://github.com/keshavkummari/intelli_devops_20191022.git
