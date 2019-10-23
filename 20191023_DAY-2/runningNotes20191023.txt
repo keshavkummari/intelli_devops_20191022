@@ -1,0 +1,60 @@
+Agenda :
+
+Cloud :
+    1. AWS 
+        1. AWS Training & Certification RoadMap
+        2. AWS Global Infra
+        3. AWS Regions & AZ's 
+        4. AWS Region & Global Based Services
+        5. AWS VPC
+        6. AWS Type of User Access : Root User and IAM User 
+        7. AWS IAM User : User and Group 
+        8. AWS CLI & SDK
+        9. AWS EC2 
+
+
+STEP-1 : 
+
+https://aws.amazon.com/free/
+
+STEP-2 : Create Account with AWS 
+
+https://portal.aws.amazon.com/billing/signup?refid=em_127222&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start
+
+FirstName
+LastName
+Email Id 
+Mobile Number 
+
+BIlling Address:
+
+Debit/Credit Card Details:
+
+2 INR 
+2 ERs
+$2
+
+IVR : Code 
+
+STEP-3 : Logi to AWS CLoud 
+
+
+AWS Global Infra :
+
+https://aws.amazon.com/about-aws/global-infrastructure/
+
+AWS Edge Location :
+
+https://aws.amazon.com/cloudfront/features/
+
+AWS Region & Global Based Services :
+
+Global :
+
+1. IAM 
+2. Route53 (DNS)
+
+Regions :
+
+1. VPC 
+2. EC2 
