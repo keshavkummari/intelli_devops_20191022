@@ -1,0 +1,128 @@
+
+
+Laptop/Desktop/Virtualbox/EC2 :
+
+    Operating System : 
+        1. Windows
+        2. Linux   - Linux is into Distribution 
+            1. RHEL   : Redhat
+            2. CENTOS : Redhat 
+            3. Fedora : Redhat
+            4. Ubuntu : Debian 
+
+    1. OS : Linux : Ubuntu 18.0.4 (Image|.iso|AMI)
+    2. System Requirement :
+        1. MotherBoard : 
+        2. CPU   : 
+        3. RAM   :
+        4. HDD   : 8gb
+    3. Key Values (tags) : 
+    4. Security Group (Firewall) 
+    5. Username & PassWord   ( Ubuntu : Default User : ubuntu )  other Distribution (ec2-user) 
+        PassWord : Keys i.e. Public and Private SSH keys 
+
+       HOME---> Lock(PublicKey) --- Key(PrivateKey) 
+
+ssh -i "ckk-aws-intelli.pem" ubuntu@54.210.172.86
+
+ssh -i "ckk-aws-intelli" ubuntu@54.210.172.86
+
+ssh -i "ckk-aws-intelli.pem" ubuntu@ec2-54-210-172-86.compute-1.amazonaws.com
+
+
+0.0.0.0/0 : IPV4
+::/0      : IPV6 
+
+
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ls -lrt ckk-aws-intelli.pem 
+-r--------@ 1 keshavkummari  staff  1696 Oct 24 08:05 ckk-aws-intelli.pem
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "ckk-aws-intelli.pem" ubuntu@ec2-18-204-197-179.compute-1.amazonaws.com
+The authenticity of host 'ec2-18-204-197-179.compute-1.amazonaws.com (18.204.197.179)' can't be established.
+ECDSA key fingerprint is SHA256:ZOe0M6yeOFsMnWkNZvjc0q7467JW7itRSzX+I/nemO8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-18-204-197-179.compute-1.amazonaws.com,18.204.197.179' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-1051-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Oct 24 03:22:45 UTC 2019
+
+  System load:  0.0               Processes:           85
+  Usage of /:   13.7% of 7.69GB   Users logged in:     0
+  Memory usage: 14%               IP address for eth0: 172.31.81.140
+  Swap usage:   0%
+
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Thu Oct 24 03:00:32 2019 from 183.83.174.77
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-81-140:~$ 
+ubuntu@ip-172-31-81-140:~$ 
+
+ubuntu@ip-172-31-81-140:~$ 
+ubuntu@ip-172-31-81-140:~$ hostname
+ip-172-31-81-140
+ubuntu@ip-172-31-81-140:~$ sudo hostnamectl set-hostname "ci.ckk.cloud"
+ubuntu@ip-172-31-81-140:~$ 
+ubuntu@ip-172-31-81-140:~$ /bin/bash
+ubuntu@ci:~$ 
+ubuntu@ci:~$ hostname
+ci.ckk.cloud
+ubuntu@ci:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ifconfig 
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.81.140  netmask 255.255.240.0  broadcast 172.31.95.255
+        inet6 fe80::1060:fdff:fe66:fbe2  prefixlen 64  scopeid 0x20<link>
+        ether 12:60:fd:66:fb:e2  txqueuelen 1000  (Ethernet)
+        RX packets 579  bytes 60206 (60.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 583  bytes 65860 (65.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 124  bytes 9660 (9.6 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 124  bytes 9660 (9.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@ci:~$ # 172.31.81.140 ci.ckk.cloud 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ #sudo vi /etc/hosts 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo su
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# echo 172.31.81.140 ci.ckk.cloud >> /etc/hosts
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+172.31.81.140 ci.ckk.cloud
+root@ci:/home/ubuntu#

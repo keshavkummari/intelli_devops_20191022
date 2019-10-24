@@ -1,0 +1,13 @@
+Agenda : 
+
+1. EC2 :
+    1. Launch a Linux Server 
+    2. Launch a Windows Server
+    3. Connect Linux from local machine using gitbash/terminal/putty
+    4. Connect Windows from local machine using RDP file 
+    5. Basic OS Commands 
+    6. Download, Install and Configure of Java 
+    7. Download, Install and Configure of Maven 
+    8. Configure Environment Variable of Java 
+    9. Configure Environment Variable of Maven 
+    
