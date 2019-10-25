@@ -1,0 +1,196 @@
+Agenda :
+
+    5. Basic OS Commands 
+    6. Download, Install and Configure of Java 
+    7. Download, Install and Configure of Maven 
+    8. Configure Environment Variable of Java 
+    9. Configure Environment Variable of Maven 
+    10. Utility Softwares : wget, curl, unzip, elinks etc...
+    11. Version Control System or Source Code Management : git
+    12. Continuous Integration i.e. jenkins 
+    13. Application Server i.e. Tomcat 
+
+JAVA :
+
+ubuntu@ci:~$ # sudo apt update 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ # sudo apt list --upgradable
+ubuntu@ci:~$ 
+ubuntu@ci:~$ # sudo apt install curl wget unzip elinks
+ubuntu@ci:~$ 
+ubuntu@ci:~$ # java -version
+ubuntu@ci:~$ 
+ubuntu@ci:~$ # sudo apt install openjdk-8-jdk 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+
+Environment Variable for Java:
+https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/
+
+ubuntu@ci:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ cat /etc/environment 
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo cp -pv /etc/environment /etc/environment_20191025
+'/etc/environment' -> '/etc/environment_20191025'
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment_20191025
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo vi /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+ubuntu@ci:~$ 
+
+ubuntu@ci:~$ source /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@ci:~$ 
+ubuntu@ci:~$ 
+ubuntu@ci:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+
+MAVEN :
+
+  44  sudo apt update
+   45  sudo apt list --upgradable
+   46  sudo apt install maven
+
+ubuntu@ci:~$ ls -lrt /usr/share/maven/bin/mvn
+-rwxr-xr-x 1 root root 5741 Oct 24  2018 /usr/share/maven/bin/mvn
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ls -lrt /usr/share/maven/bin/
+total 16
+-rwxr-xr-x 1 root root 1532 Oct 24  2018 mvnyjp
+-rwxr-xr-x 1 root root 1485 Oct 24  2018 mvnDebug
+-rwxr-xr-x 1 root root 5741 Oct 24  2018 mvn
+lrwxrwxrwx 1 root root   18 Apr  9  2019 m2.conf -> /etc/maven/m2.conf
+ubuntu@ci:~$ 
+ubuntu@ci:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1051-aws", arch: "amd64", family: "unix"
+
+Environment:
+
+https://maven.apache.org/install.html
+
+ubuntu@ci:~$ # sudo apt install maven
+ubuntu@ci:~$ 
+ubuntu@ci:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1051-aws", arch: "amd64", family: "unix"
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ls -lrt /usr/share/maven/bin/
+total 16
+-rwxr-xr-x 1 root root 1532 Oct 24  2018 mvnyjp
+-rwxr-xr-x 1 root root 1485 Oct 24  2018 mvnDebug
+-rwxr-xr-x 1 root root 5741 Oct 24  2018 mvn
+lrwxrwxrwx 1 root root   18 Apr  9  2019 m2.conf -> /etc/maven/m2.conf
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ls -lrt /etc/environment
+-rw-r--r-- 1 root root 168 Oct 25 01:59 /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo cp -pv /etc/environment /etc/environment_20191025_BeforeMaven
+'/etc/environment' -> '/etc/environment_20191025_BeforeMaven'
+ubuntu@ci:~$ 
+ubuntu@ci:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root  96 Oct  2 17:09 /etc/environment_20191025
+-rw-r--r-- 1 root root 168 Oct 25 01:59 /etc/environment_20191025_BeforeMaven
+-rw-r--r-- 1 root root 168 Oct 25 01:59 /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo vi /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo vi /etc/environment
+ubuntu@ci:~$ 
+ubuntu@ci:~$ sudo su
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# # echo MAVEN_HOME=/usr/share/maven >> /etc/environment
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# # echo M2=$MAVEN_HOME/bin >> /etc/environment
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cp -pv /etc/environment /etc/environment_KK
+'/etc/environment' -> '/etc/environment_KK'
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cat /etc/environment_KK
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+# MAVEN HOME PATH SETUP
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+
+root@ci:/home/ubuntu# vi /etc/environment_KK
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cat /etc/environment_KK
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# echo MAVEN_HOME=/usr/share/maven >> /etc/environment_KK 
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cat /etc/environment_KK 
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+
+MAVEN_HOME=/usr/share/maven
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# echo M2=$MAVEN_HOME/bin >> /etc/environment_KK 
+root@ci:/home/ubuntu# 
+root@ci:/home/ubuntu# cat /etc/environment_KK 
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+
+MAVEN_HOME=/usr/share/maven
+M2=/usr/share/maven/bin
+root@ci:/home/ubuntu# 
+
+ubuntu@ci:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# JAVA HOME PATH SETUP
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+# MAVEN HOME PATH SETUP
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+
+ubuntu@ci:~$ 
+ubuntu@ci:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@ci:~$ 
+ubuntu@ci:~$ echo $M2
+/usr/share/maven/bin
+ubuntu@ci:~$ 

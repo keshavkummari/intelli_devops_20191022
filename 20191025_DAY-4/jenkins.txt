@@ -1,0 +1,26 @@
+ubuntu@ci:/etc/apt/sources.list.d$ wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+OK
+ubuntu@ci:/etc/apt/sources.list.d$ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+ubuntu@ci:/etc/apt/sources.list.d$ 
+ubuntu@ci:/etc/apt/sources.list.d$ ls -lrt
+total 4
+-rw-r--r-- 1 root root 48 Oct 25 02:52 jenkins.list
+ubuntu@ci:/etc/apt/sources.list.d$ cat jenkins.list 
+deb http://pkg.jenkins.io/debian-stable binary/
+ubuntu@ci:/etc/apt/sources.list.d$ sudo apt-get update
+
+
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>releases</name>
+			<url>http://54.226.166.54:8081/artifactory/libs-release-local/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>snapshots</name>
+			<url>http://54.226.166.54:8081/artifactory/libs-snapshot-local/</url>
+		</snapshotRepository>
+	</distributionManagement>
+    
