@@ -1,0 +1,18 @@
+ubuntu@docker:~$ history
+    1  hostname
+    2  ifconfig
+    3  sudo su
+    4  pwd
+    5  hostname
+    6  docker 
+    7  sudo apt update 
+    8  sudo apt list --upgradable
+    9  sudo apt  install docker.io
+   10  docker --version
+   11  docker --help
+   12  exit
+   13  sudo hostnamectl set-hostname "docker.ckk.cloud"
+   14  /bin/bash
+   15  exit
+   16  hostname
+   17  docker --version

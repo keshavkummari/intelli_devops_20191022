@@ -1,0 +1,10 @@
+Agenda :
+
+1. Tomcat
+2. Jfrog Artifactory
+3. Manual Deployment using Tomcat (.war or .jar or .ear)
+4. Jenkins Deployment using Tomcat 
+5. Maven and Jfrog Integration 
+6. Execute a Maven Job and move the Snapshot to Jfrog Artifactory
+7. Docker 
+

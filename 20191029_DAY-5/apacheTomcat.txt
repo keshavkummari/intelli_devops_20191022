@@ -1,0 +1,186 @@
+You are not authorized to view this page.
+
+By default the Manager is only accessible from a browser running on the same machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Manager's context.xml file.
+
+If you have already configured the Manager application to allow access and you have used your browsers back button, used a saved book-mark or similar then you may have triggered the cross-site request forgery (CSRF) protection that has been enabled for the HTML interface of the Manager application. You will need to reset this protection by returning to the main Manager page. Once you return to this page, you will be able to continue using the Manager application's HTML interface normally. If you continue to see this access denied message, check that you have the necessary permissions to access this application.
+
+If you have not changed any configuration files, please examine the file conf/tomcat-users.xml in your installation. That file must contain the credentials to let you use this webapp.
+
+For example, to add the manager-gui role to a user named tomcat with a password of s3cret, add the following to the config file listed above.
+
+<role rolename="manager-gui"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+Note that for Tomcat 7 onwards, the roles required to use the manager application were changed from the single manager role to the following four roles. You will need to assign the role(s) required for the functionality you wish to access.
+
+manager-gui - allows access to the HTML GUI and the status pages
+manager-script - allows access to the text interface and the status pages
+manager-jmx - allows access to the JMX proxy and the status pages
+manager-status - allows access to the status pages only
+The HTML interface is protected against CSRF but the text and JMX interfaces are not. To maintain the CSRF protection:
+
+Users with the manager-gui role should not be granted either the manager-script or manager-jmx roles.
+If the text or jmx interfaces are accessed through a browser (e.g. for testing since these interfaces are intended for tools not humans) then the browser must be closed afterwards to terminate the session.
+For more information - please see the Manager App How-To.
+
+
+
+By default the Host Manager is only accessible from a browser running on the same machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Host Manager's context.xml file.
+
+If you have already configured the Host Manager application to allow access and you have used your browsers back button, used a saved book-mark or similar then you may have triggered the cross-site request forgery (CSRF) protection that has been enabled for the HTML interface of the Host Manager application. You will need to reset this protection by returning to the main Host Manager page. Once you return to this page, you will be able to continue using the Host Manager application's HTML interface normally. If you continue to see this access denied message, check that you have the necessary permissions to access this application.
+
+If you have not changed any configuration files, please examine the file conf/tomcat-users.xml in your installation. That file must contain the credentials to let you use this webapp.
+
+For example, to add the admin-gui role to a user named tomcat with a password of s3cret, add the following to the config file listed above.
+
+<role rolename="admin-gui"/>
+<user username="tomcat" password="s3cret" roles="admin-gui"/>
+Note that for Tomcat 7 onwards, the roles required to use the host manager application were changed from the single admin role to the following two roles. You will need to assign the role(s) required for the functionality you wish to access.
+
+admin-gui - allows access to the HTML GUI
+admin-script - allows access to the text interface
+The HTML interface is protected against CSRF but the text interface is not. To maintain the CSRF protection:
+
+Users with the admin-gui role should not be granted the admin-script role.
+If the text interface is accessed through a browser (e.g. for testing since this interface is intended for tools not humans) then the browser must be closed afterwards to terminate the session.
+
+
+
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/manager/META-INF/context.xml 
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/host-manager/META-INF/context.xml 
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# grep '|.*' webapps/manager/META-INF/context.xml
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# grep --color '|.*' webapps/host-manager/META-INF/context.xml
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/manager/META-INF/context.xml
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/host-manager/META-INF/context.xml
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/manager/META-INF/context.xml
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# vi webapps/host-manager/META-INF/context.xml
+root@1ba29dbe3a88:/usr/local/tomcat# 
+root@1ba29dbe3a88:/usr/local/tomcat# cd conf/
+root@1ba29dbe3a88:/usr/local/tomcat/conf# ls -lrt
+total 228
+-rw-r--r-- 1 root root 171482 Oct  7 13:33 web.xml
+-rw-r--r-- 1 root root   2633 Oct  7 13:33 tomcat-users.xsd
+-rw-r--r-- 1 root root   2164 Oct  7 13:33 tomcat-users.xml
+-rw-r--r-- 1 root root   7513 Oct  7 13:33 server.xml
+-rw-r--r-- 1 root root   3916 Oct  7 13:33 logging.properties
+-rw-r--r-- 1 root root   2313 Oct  7 13:33 jaspic-providers.xsd
+-rw-r--r-- 1 root root   1149 Oct  7 13:33 jaspic-providers.xml
+-rw-r--r-- 1 root root   1338 Oct  7 13:33 context.xml
+-rw-r--r-- 1 root root   7661 Oct  7 13:33 catalina.properties
+-rw-r--r-- 1 root root  13548 Oct  7 13:33 catalina.policy
+drwxr-s--- 3 root root   4096 Oct 29 02:54 Catalina
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# vi tomcat-users.xml 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# cp -pv tomcat-users.xml tomcat-users.xml_20191029
+'tomcat-users.xml' -> 'tomcat-users.xml_20191029'
+root@1ba29dbe3a88:/usr/local/tomcat/conf# ls -lrt
+total 232
+-rw-r--r-- 1 root root 171482 Oct  7 13:33 web.xml
+-rw-r--r-- 1 root root   2633 Oct  7 13:33 tomcat-users.xsd
+-rw-r--r-- 1 root root   2164 Oct  7 13:33 tomcat-users.xml_20191029
+-rw-r--r-- 1 root root   2164 Oct  7 13:33 tomcat-users.xml
+-rw-r--r-- 1 root root   7513 Oct  7 13:33 server.xml
+-rw-r--r-- 1 root root   3916 Oct  7 13:33 logging.properties
+-rw-r--r-- 1 root root   2313 Oct  7 13:33 jaspic-providers.xsd
+-rw-r--r-- 1 root root   1149 Oct  7 13:33 jaspic-providers.xml
+-rw-r--r-- 1 root root   1338 Oct  7 13:33 context.xml
+-rw-r--r-- 1 root root   7661 Oct  7 13:33 catalina.properties
+-rw-r--r-- 1 root root  13548 Oct  7 13:33 catalina.policy
+drwxr-s--- 3 root root   4096 Oct 29 02:54 Catalina
+root@1ba29dbe3a88:/usr/local/tomcat/conf# vi tomcat-users.xml 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# cat tomcat-users.x
+cat: tomcat-users.x: No such file or directory
+root@1ba29dbe3a88:/usr/local/tomcat/conf# cat tomcat-users.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+<!--
+  NOTE:  By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary. It is
+  strongly recommended that you do NOT use one of the users in the commented out
+  section below since they are intended for use with the examples web
+  application.
+-->
+<!--
+  NOTE:  The sample user and role entries below are intended for use with the
+  examples web application. They are wrapped in a comment and thus are ignored
+  when reading this file. If you wish to configure these users for use with the
+  examples web application, do not forget to remove the <!.. ..> that surrounds
+  them. You will also need to set the passwords to something appropriate.
+-->
+  <role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <user username="admin" password="redhat@123" roles="admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>
+</tomcat-users>
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# 
+root@1ba29dbe3a88:/usr/local/tomcat/conf# exit
+exit
+root@docker:~# 
+root@docker:~# 
+root@docker:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tomcat              latest              882487b8be1d        10 days ago         507MB
+ubuntu              latest              cf0f3ca922e0        10 days ago         64.2MB
+root@docker:~# 
+root@docker:~# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+1ba29dbe3a88        tomcat:latest       "catalina.sh run"   33 minutes ago      Up 32 minutes       0.0.0.0:8888->8080/tcp   AppServer
+root@docker:~# 
+root@docker:~# docker commit  -m="Tomcat Application Server By CKK" keshavkummari/tomcat-ckk:v1.0.0 
+Error response from daemon: No such container: keshavkummari/tomcat-ckk:v1.0.0
+root@docker:~# 
+root@docker:~# docker commit  -m="Tomcat Application Server By CKK" 1ba29dbe3a88 
+sha256:93f28a3bc03966cb89ea68d30e1875d7cf751fe6c17c4a8ae85f76d9b72acbe3
+root@docker:~# 
+root@docker:~# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+<none>              <none>              93f28a3bc039        26 seconds ago      1.35GB
+tomcat              latest              882487b8be1d        10 days ago         507MB
+ubuntu              latest              cf0f3ca922e0        10 days ago         64.2MB
+root@docker:~# 
+
+
