@@ -1,0 +1,9 @@
+Agenda :
+
+1. Docker 
+2. Docker Tomcat
+3. Docker Jfrog
+4. Docker Jenkins
+5. Maven and Jfrog Integration
+
+
