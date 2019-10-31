@@ -7,7 +7,7 @@
         <repository>
           <id>release</id>
           <name>release</name>
-          <url>http://54.80.153.194:8081/artifactory/libs-release-local</url>
+          <url>http://54.86.162.107:8081/artifactory/libs-release-local</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -18,7 +18,7 @@
         <repository>
           <id>snapshot</id>
           <name>snapshot</name>
-          <url>http://54.80.153.194:8081/artifactory/libs-snapshot-local</url>
+          <url>http://54.86.162.107:8081/artifactory/libs-snapshot-local</url>
           <releases>
             <enabled>false</enabled>
           </releases>

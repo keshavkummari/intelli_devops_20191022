@@ -1,0 +1,164 @@
+PART-1:
+
+STEP-1 : Go to Jfrog artifactory
+
+Folder: libs-snapshot-local
+
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>55249a3d9521-snapshots</name>
+        <url>http://54.86.162.107:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
+
+Folder : libs-release-local
+
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>55249a3d9521-releases</name>
+        <url>http://54.86.162.107:8081/artifactory/libs-release-local</url>
+    </repository>
+</distributionManagement>
+
+STEP-2 : Take above XML elements and update in Code Repository under POM.xml file 
+
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>snapshots</name>
+        <url>http://54.86.162.107:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+    
+    <repository>
+        <id>central</id>
+        <name>releases</name>
+        <url>http://54.86.162.107:8081/artifactory/libs-release-local</url>
+    </repository>
+</distributionManagement>
+
+PART-2 : Maven and Jfrog Connections 
+
+Continuous Integration Server i.e. : Jenkins 
+    1. Ubuntu 
+        1. Java 
+        2. Maven 
+        3. Env Java 
+        4. Env Maven 
+        5. Download, Install and Configure Jenkis 
+        6. Jenkins running 
+
+STEP-1: Go to Jenkins Server :
+
+Go to Jenkins User Home Directory 
+
+cd /var/lib/jenkins
+
+ls -lrta 
+
+Look for .m2 folder in Jenkins user home Directory :
+
+ls -lrta .m2 
+
+cd .m2 
+
+Check what you have in .m2 folder :
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!"*** Insert encrypted password here ***"}</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!"*** Insert encrypted password here ***"}</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://54.86.162.107:8081/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://54.86.162.107:8081/artifactory/libs-snapshot</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://54.86.162.107:8081/artifactory/libs-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://54.86.162.107:8081/artifactory/libs-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
+
+
+
+
+jenkins@ci:~/.m2$ pwd
+/var/lib/jenkins/.m2
+jenkins@ci:~/.m2$ ls -lrt
+total 12
+drwxr-xr-x 4 jenkins jenkins 4096 Oct 25 03:21 repository
+-rw-rw-r-- 1 jenkins jenkins 1338 Oct 31 02:14 settings.xml
+-rw-rw-r-- 1 jenkins jenkins  144 Oct 31 02:16 settings-security.xml
+jenkins@ci:~/.m2$ 
+jenkins@ci:~/.m2$ mvn -emp redhat@123
+{eW/eXM6g1TcHavezJU6Sds9F/huKf4AmhzOhfNJUSpE=}
+jenkins@ci:~/.m2$ 
+jenkins@ci:~/.m2$ vi settings-security.xml 
+jenkins@ci:~/.m2$ 
+jenkins@ci:~/.m2$ mvn --encrypt-password redhat@123
+{6Df4OX48TCcHI2ZHBj2u+ovf12Wg9GAwH+wmglPo260=}
+jenkins@ci:~/.m2$ 
+jenkins@ci:~/.m2$ vi settings.xml 
+
+
+
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ devops ---
+[INFO] Installing /var/lib/jenkins/devops/target/devops-1.1.0-SNAPSHOT.war to /var/lib/jenkins/.m2/repository/com/example/devops/1.1.0-SNAPSHOT/devops-1.1.0-SNAPSHOT.war
+[INFO] Installing /var/lib/jenkins/devops/pom.xml to /var/lib/jenkins/.m2/repository/com/example/devops/1.1.0-SNAPSHOT/devops-1.1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ devops ---
+Downloading from snapshots: http://54.86.162.107:8081/artifactory/libs-snapshot-local/com/example/devops/1.1.0-SNAPSHOT/maven-metadata.xml
+Uploading to snapshots: http://54.86.162.107:8081/artifactory/libs-snapshot-local/com/example/devops/1.1.0-SNAPSHOT/devops-1.1.0-20191031.022854-1.war
+Uploading to snapshots: http://54.86.162.107:8081/artifactory/libs-snapshot-local/com/example/devops/1.1.0-SNAPSHOT/devops-1.1.0-20191031.022854-1.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.333 s
+[INFO] Finished at: 2019-10-31T02:28:55Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.8.2:deploy (default-deploy) on project devops: Failed to deploy artifacts: Could not transfer artifact com.example:devops:war:1.1.0-20191031.022854-1 from/to snapshots (http://54.86.162.107:8081/artifactory/libs-snapshot-local): Failed to transfer file: http://54.86.162.107:8081/artifactory/libs-snapshot-local/com/example/devops/1.1.0-SNAPSHOT/devops-1.1.0-20191031.022854-1.war. Return code is: 401, ReasonPhrase: Unauthorized. -> [Help 1]
+
