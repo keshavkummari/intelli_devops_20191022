@@ -1,0 +1,41 @@
+Agenda :
+
+1. SonarQube
+2. Nagios
+
+https://assets.nagios.com/downloads/nagiosxi/docs/Installing-Nagios-XI-Manually-on-Linux.pdf
+
+
+501  docker --version
+  502  docker image
+  503  docker images
+  504  docker system prune
+  505  docker images
+  506  docker system prune -a
+  507  docker --version
+  508  docker images
+  509  docker ps
+  510  docker ps -a
+  511  docker --help
+  512  docker pull sonarqube
+  513  docker images
+  514  ocker run -d --name sonarqube -p 9000:9000 sonarqube
+  515  docker run -d --name sonarqube -p 9000:9000 sonarqube
+  516  docker ps
+  517  ifconfig|grep 192.168
+  518  docker exec -it 5c96fb2c4c34 /bin/bash
+  519  pwd
+  520  docker images
+  521  docker ps
+  522  docker ps -a
+  523  docker pull nagiosxi 
+  524  docker login
+  525  docker pull nagiosxi 
+  526  docker pull devopsdunkin/nagiosxi
+  527  docker pull phaneindra/nagiosxi
+  528  pwd
+  529  docker images
+  530  docker run -d -p 80:80 -p 5666:5666 -p 5667:5667 --name MonitoringTool phaneindra/nagiosxi
+  531  docker ps
+  532  ifconfig | grep 192.168
+
