@@ -1,0 +1,51 @@
+Agenda :
+
+1. Docker
+2. Ansible 
+
+Docker :
+
+# docker pull tomcat 
+
+# docker run -d --name AppServer -p 8080:8080 tomcat:latest 
+
+# docker ps 
+
+# docker exec -it container-id cat /etc/issue 
+
+#----------------------------------------------------------------------------#
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+<none>              <none>              a4704d16f52c        6 minutes ago       609MB
+ubuntu              latest              775349758637        4 days ago          64.2MB
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker tag a4704d16f52c cloudbinary/tomcat:latest
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker images
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+cloudbinary/tomcat   latest              a4704d16f52c        6 minutes ago       609MB
+ubuntu               latest              775349758637        4 days ago          64.2MB
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker tag a4704d16f52c cloudbinary/tomcat:v1.0.0
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker images
+REPOSITORY           TAG                 IMAGE ID            CREATED             SIZE
+cloudbinary/tomcat   latest              a4704d16f52c        7 minutes ago       609MB
+cloudbinary/tomcat   v1.0.0              a4704d16f52c        7 minutes ago       609MB
+ubuntu               latest              775349758637        4 days ago          64.2MB
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 
+Keshavs-MacBook-Pro:tomcat keshavkummari$ docker push cloudbinary/tomcat:v1.0.0
+The push refers to repository [docker.io/cloudbinary/tomcat]
+bdc2dec84436: Pushed 
+d6bdb1cd9303: Pushed 
+3ff1889be191: Pushed 
+5bc764ed2cac: Pushed 
+9e983323b6fb: Pushed 
+f239c3e8e89a: Pushed 
+4696249cb001: Pushed 
+e0b3afb09dc3: Mounted from library/ubuntu 
+6c01b5a53aac: Mounted from library/ubuntu 
+2c6ac8e5063e: Mounted from library/ubuntu 
+cc967c529ced: Mounted from library/ubuntu 
+v1.0.0: digest: sha256:1ffa2d3674c9b2a270ed2a182554b71e4cdd26445b8b01433757d92c2297ece1 size: 2632
+Keshavs-MacBook-Pro:tomcat keshavkummari$ 

@@ -1,0 +1,54 @@
+
+Configuration Management :
+    1. Pull Based : Chef & Puppet 
+        - Agent Software is required
+        - Ruby DSL
+
+    2. Push Based : Ansible & Salt 
+    Ansible:
+        - No Agent or Agentless
+        - SSH 
+        - Python 
+        - Open Source
+        - Michael DeHaan 
+        - in 2015 Redhat has acquired Ansible 
+    Configuration Management, Deployment & Provisioning etc.. 
+
+1. What is Ansible?
+Ansible is a radically simple IT automation system. It handles configuration-management, application deployment, cloud provisioning, ad-hoc task-execution, and multinode orchestration - including trivializing things like zero-downtime rolling updates with load balancers.
+
+2. Why Ansible?
+
+    - OpenSource
+    - Easy to Learn 
+    - Easy Installation & Configuration steps 
+    - No need of Agent installation on Nodes
+    - Highly Scalable 
+    - Python 
+    
+3. How Does Ansible Work?
+    - With the help of Ansible Playbooks, which are written in very simple language, YAML 
+
+Requirement : Install new version of Tomcat part of all the stages :
+
+Ansible Master ---: 
+    SSH-Keys :
+        Keys : PublicKey and PrivateKey 
+
+    Stages :
+        - dev :
+            - 4
+        - tst :
+            - 8
+        - acc :
+            - 8
+        - prd :
+            - 40 + 
+
+4. Setting up Master & Slave 
+
+5. Ansible Playbooks 
+
+6. Ansible Architecture 
+
+7. Use Case with Ansible 
