@@ -1,0 +1,19 @@
+Agenda :
+
+1. Ansible 
+
+Ansible-Master :
+aws ec2 run-instances --image-id "ami-0063927a" --count 1 --instance-type t2.micro --key-name route53_aws --security-group-ids "sg-0e9253443583c1c41" --subnet-id "subnet-ee45eeb2" --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value="Ansible-Master"}]'
+
+Ansible-Node :
+aws ec2 run-instances --image-id "ami-0063927a" --count 1 --instance-type t2.micro --key-name route53_aws --security-group-ids "sg-0e9253443583c1c41" --subnet-id "subnet-ee45eeb2" --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value="Ansible-Node"}]'
+
+
+aws ec2 run-instances --image-id "ami-0063927a" 
+--count 1 
+--instance-type t2.micro 
+--key-name route53_aws 
+--security-group-ids "sg-0e9253443583c1c41" 
+--subnet-id "subnet-ee45eeb2" 
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value="Ansible-Master"}]'
+

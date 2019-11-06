@@ -1,0 +1,27 @@
+#-----------------------------#
+Ansible Master Configuration:
+#-----------------------------#
+
+Instance-1 : CentOS-7
+Hostname   : ansible-master.ckk.com
+IPAddress  : 172.31.4.117
+Useradd    : ansi 
+Password   : redhat
+Add user   : /etc/sudoers
+Uncomment  : "PermitRootLogin" in /etc/ssh/sshd_config : yes 
+Uncomment  : "PasswordAuthentication" in /etc/ssh/sshd_config : yes 
+SSH Daemon : Restart systemctl restart sshd
+Generate SSHKey 		: ssh-keygen
+Exchange SSHKey 		: ssh-copy-id <ansible-node.ckk.com>/ipaddress
+
+Utility Softwares 		: # yum install wget vim curl elinks unzip -y
+Dependency Softwares 	: # yum install python -y
+
+
+[root@ansible-master ansi]# ansible --version
+ansible 2.8.5
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible
+  python version = 2.7.5 (default, Aug  7 2019, 00:51:29) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]

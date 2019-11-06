@@ -1,0 +1,57 @@
+
+Ansible Master Steps:
+
+STEP-1 : Hostname 
+
+ubuntu@ip-172-31-44-185:~$ sudo hostnamectl set-hostname "ansible-master.ckk.com"
+/bin/bash
+hostname
+ifconfig 
+172.31.44.185 ansible-master.ckk.com
+sudo vi /etc/hosts
+ubuntu@ansible-master:~$ cat /etc/hosts
+# Ansible Master
+172.31.44.185 ansible-master.ckk.com
+
+STEP-2 : Create a User and add him to sudoers list : 
+
+root@ansible-master:~# useradd ansi
+
+root@ansible-master:~# passwd ansi
+
+root@ansible-master:~# vi /etc/sudoers
+
+root@ansible-master:~# grep -H -i -n ansi /etc/sudoers
+/etc/sudoers:21:ansi	ALL=(ALL:ALL) ALL NOPASSWRD: ALL
+
+STEP-3 : SSH configuration modifications
+
+root@ansible-master:~# vi /etc/ssh/sshd_config 
+
+root@ansible-master:~# grep -H -i -n 'PermitRootLogin' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:32:#PermitRootLogin prohibit-password
+/etc/ssh/sshd_config:33:PermitRootLogin yes
+/etc/ssh/sshd_config:81:# the setting of "PermitRootLogin without-password".
+
+root@ansible-master:~# grep -H -i -n 'PasswordAuthentication' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:57:PasswordAuthentication yes
+/etc/ssh/sshd_config:79:# PasswordAuthentication.  Depending on your PAM configuration,
+/etc/ssh/sshd_config:83:# PAM authentication, then enable this but set PasswordAuthentication
+
+# vi /etc/ssh/sshd_config
+
+Uncomment  : "PermitRootLogin" in /etc/ssh/sshd_config (PermitRootLogin yes)
+Uncomment  : "PasswordAuthentication" in /etc/ssh/sshd_config (PasswordAuthentication yes)
+SSH Daemon : Restart systemctl restart sshd
+
+systemctl restart sshd.service
+
+STEP-4 : Generating SSH Keys (Public and Private Keys)
+
+ssh-keygen 
+
+[ansi@ansible-master .ssh]$ ls -lrt
+-rw-r--r--. 1 ansi ansi  409 Nov  6 02:23 id_rsa.pub
+-rw-------. 1 ansi ansi 1675 Nov  6 02:23 id_rsa
+
+STEP-5 : Install Ansible 

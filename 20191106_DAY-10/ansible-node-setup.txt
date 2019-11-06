@@ -1,0 +1,15 @@
+#-----------------------------#
+Ansible Nodes Configuration:
+#-----------------------------#
+
+Instance-2 : CentOS-7
+Hostname   : node1.kk.com
+IPAddress  : 172.31.8.172
+Useradd    : ansi
+Password   : redhat
+Add user   : /etc/sudoers
+Uncomment  : "PermitRootLogin" in /etc/ssh/sshd_config : yes 
+Uncomment  : "PasswordAuthentication" in /etc/ssh/sshd_config : yes 
+SSH Daemon : Restart systemctl restart sshd
+Generate SSHKey 		: ssh-keygen
+
