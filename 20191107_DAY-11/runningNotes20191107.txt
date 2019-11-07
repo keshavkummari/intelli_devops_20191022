@@ -1,0 +1,90 @@
+Agenda :
+
+1. Ansible 
+
+
+AWS - AmazonLinux :
+
+
+sudo yum-config-manager --enable epel
+
+[root@ansible-master ~]# history
+    1  cd
+    2  pwd
+    3  ls -lrt /etc/yum.repos.d/
+    4  yum install ansible*
+    5  yum install ansible
+    6  yum install ansible
+    7  yum update
+    8  ls -lrt /etc/yum.repos.d/
+    9  cat /etc/yum.repos.d/epel.repo 
+   10  cat /etc/yum.repos.d/epel.repo  | grep 'yum-config-manager'
+   11  vi /etc/yum.repos.d/epel.repo
+   12  yum install ansible
+   13  sudo yum-config-manager --enable epel
+   14  yum repolist
+   15  yum update
+   16  yum install ansible
+   17  history
+   18  ansible
+   19  ansible --version
+   20  ls -lrt /etc/ansible/ansible.cfg 
+   21  ls -lrt /usr/bin/ansible
+   22  ls -lrt /etc/ansible/hosts 
+   23  ls -lrt /etc/ansible/
+   24  cp -pv /etc/ansible/hosts /etc/ansible/hosts_20191107
+   25  cp -pv /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg_20191107
+
+   [root@ansible-master ~]# vi /etc/ansible/ansible.cfg
+[root@ansible-master ~]# 
+[root@ansible-master ~]# grep inven /etc/ansible/ansible.cfg
+inventory      = /etc/ansible/hosts
+
+[root@ansible-node ~]# useradd ansi
+[root@ansible-node ~]# passwd ansi
+Changing password for user ansi.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@ansible-node ~]# vi /etc/sudoers
+[root@ansible-node ~]# 
+[root@ansible-node ~]# grep ansi /etc/sudoers
+ansi	ALL=(ALL)  	NOPASSWD: ALL
+[root@ansible-node ~]# 
+[root@ansible-node ~]# grep -H -n ansi /etc/sudoers
+/etc/sudoers:92:ansi	ALL=(ALL)  	NOPASSWD: ALL
+[root@ansible-node ~]# 
+[root@ansible-node ~]# vi /etc/ssh/sshd_config 
+[root@ansible-node ~]# 
+[root@ansible-node ~]# grep -H -n 'PermitRootLogin' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:38:PermitRootLogin yes
+/etc/ssh/sshd_config:40:PermitRootLogin forced-commands-only
+/etc/ssh/sshd_config:91:# the setting of "PermitRootLogin without-password".
+[root@ansible-node ~]# 
+[root@ansible-node ~]# vi /etc/ssh/sshd_config 
+[root@ansible-node ~]# vi /etc/ssh/sshd_config 
+[root@ansible-node ~]# 
+[root@ansible-node ~]# grep -H -n 'PasswordAuthentication' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:65:PasswordAuthentication yes
+/etc/ssh/sshd_config:89:# PasswordAuthentication.  Depending on your PAM configuration,
+/etc/ssh/sshd_config:93:# PAM authentication, then enable this but set PasswordAuthentication
+[root@ansible-node ~]# 
+
+Master:
+    6  ssh ansi@172.31.17.11
+    7  ssh-copy-id 172.31.17.11
+
+[ansi@ansible-master ~]$ ls -lrt /etc/ansible/ansible.cfg
+-rw-r--r-- 1 root root 19556 Nov  7 02:21 /etc/ansible/ansible.cfg
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ ls -lrt /etc/ansible/hosts
+-rw-r--r-- 1 root root 1016 May 28 04:54 /etc/ansible/hosts
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ sudo vi /etc/ansible/hosts
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ grep '172.31.17.11' /etc/ansible/hosts
+172.31.17.11
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ grep 'inven' /etc/ansible/ansible.cfg
+inventory      = /etc/ansible/hosts
