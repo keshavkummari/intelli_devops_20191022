@@ -1,0 +1,39 @@
+Agenda :
+
+1. Recap 
+2. Kubernetes 
+
+CI/CD  : Developer Flow:
+    1 Compile           
+    2 Build
+    3 Junit Test  
+        4 Code Quality using SonarQube 
+    5 Package the code to .war or .jar 
+            (Maven with Jfrog Integration) i.e. settings.xml & settings-security.xml 
+    6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    7 Deploy the Snapshot to Development environment (Tomcat)
+    8 Validate the Build and Deployment 
+
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war 
+    6. Download, Install and Configure Application Server i.e. Apache Tomcat 
+    7. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment 
+
+Customer/Client : Cloud Binary : Domain : Online Teaching : (Develop an Application and Deploy)
+
+i-shaped, T-Shape, Pi-Shape & Comb-Shape IT Professional 
+    4   ,  2,      3  ,        1 
+Comb-Shape IT Professional  :
+1. Business 
+2. Develop Code & Test 
+3. Deploy 
+4. Monitor 
+
+
+STEP-1 : Generate Project Code :
+
+https://start.spring.io/
+
