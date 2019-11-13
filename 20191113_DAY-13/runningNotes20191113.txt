@@ -1,0 +1,20 @@
+Agenda :
+
+1. Kubernetes
+    1. Introduction to K8s 
+    2. Installation of K8s
+    3. Service in K8s
+    4. Docker Swarm VS K8s
+    5. Understanding of K8s Architecture
+    6. Deployments in K8s
+
+
+Kubernetes is OpenSource 
+K8s it was originally developed by Google
+First version was released in 21st July 2015
+
+1. Node Controller
+2. Replication Controller
+3. Endpoints Controller
+4. Service Accounts & Token Controller
+
