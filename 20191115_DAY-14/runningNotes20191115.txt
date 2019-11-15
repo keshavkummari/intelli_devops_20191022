@@ -1,0 +1,38 @@
+Agenda :
+
+1. Kubernetes :
+    1. Download
+    2. Install
+    3. Configure Instances for Kubernetes
+    4. Create Cluster 
+    5. Add Instances into Cluster 
+    6. Control Nodes from Master 
+    7. Deploy a Application on Cluster
+
+Prerequisites:
+1. CPU : 2 Core 
+2. RAM : 4 GB 
+3. HDD : 8GB Free Space 
+
+AWS Cloud ----> Compute ---> EC2 ----> Instances(Linux)
+
+Operating System : Linux 
+Name of Distribution : Ubuntu 
+Version : 18.04 
+Architecture : 64Bit
+No of Instances : 3 
+
+1. Master Node              : k8s-master.ckk.com 
+2. Worker Node / Slave Node : k8s-node1.ckk.com 
+3. Worker Node / Slave Node : k8s-node2.ckk.com 
+
+
+ls -lrt /var/lib/kubelet/kubeadm-flags.env
+
+ls -lrt /var/lib/kubelet/config.yaml
+
+ls -lrt /etc/kubernetes/pki
+
+ls -lrt /etc/kubernetes
+
+ls -lrt /etc/kubernetes/manifests
