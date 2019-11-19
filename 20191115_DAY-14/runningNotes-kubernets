@@ -1,0 +1,162 @@
+
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+sudo apt-get install docker.io -y 
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.31.21.128
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.21.128:6443 --token vubwkl.m21whzhhhaplpy6t \
+    --discovery-token-ca-cert-hash sha256:ce5b55e548f5c00fa7a22f95c0b4b12c4aa569cee9f4fd5755a7e039495ccf89 
+
+sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
+
+sudo kubeadm join 172.31.21.128:6443 --token vubwkl.m21whzhhhaplpy6t --discovery-token-ca-cert-hash sha256:ce5b55e548f5c00fa7a22f95c0b4b12c4aa569cee9f4fd5755a7e039495ccf89 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+
+
+ubuntu@k8s-master:~/deployment$ history
+    1  sudo hostnamectl set-hostname "k8s-master.devops.com"
+    2  exec bash
+    3  hostname
+    4  hostname -I
+    5  # 172.31.21.128 k8s-master.devops.com
+    6  sudo vi /etc/hosts
+    7* cat /var/log/apt/history.lo
+    8  sudo vi /etc/hosts
+    9  cat /etc/hosts
+   10  sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+   11  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+   12  cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+   13  cat /etc/apt/sources.list.d/kubernetes.list
+   14  sudo apt-get update
+   15  sudo apt-get install docker.io -y 
+   16  sudo apt-get install -y kubelet kubeadm kubectl
+   17  sudo apt-mark hold kubelet kubeadm kubectl
+   18  sudo systemctl status docker.service 
+   19  sudo systemctl enable docker.service 
+   20  sudo systemctl status docker.service 
+   21  systemctl daemon-reload
+   22  sudo systemctl daemon-reload
+   23  sudo systemctl restart kubelet
+   24  cat /etc/hosts
+   25  hostname -I
+   26  sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.31.21.128
+   27  mkdir -p $HOME/.kube
+   28  ls -lrta .kube/
+   29  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   30  ls -lrta .kube/
+   31  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   32  ls -lrta .kube/
+   33  sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
+   34  kubectl get pods --all-namespaces
+   35  kubectl get nodes
+   36  kubectl get pods
+   37  kubectl get nodes
+   38  docker --version
+   39  docker images
+   40  kubectl run nginx --image=nginx 
+   41  ls -lrt
+   42  kubectl get pods
+   43  kubectl get pods --all-namespaces
+   44  kubectl delete deployment/nginx
+   45  kubectl get pods
+   46  kubectl get pods --all-namespaces
+   47  kubectl create -f deployment-definition.yml 
+   48  kubectl create -f deployment-definition.yml
+   49  # kubectl get deployments
+   50  # kubectl get replicaset 
+   51  # kubectl get pods
+   52  kubectl get pods
+   53  kubectl get replicaset
+   54  kubectl get all
+   55  mkdir deployment
+   56  ls -lrt
+   57  cd deployment/
+   58  ls -lrt
+   59  cd ../
+   60  pwd
+   61  ls -lrt
+   62  mkdir pod
+   63  mkdir replicaset
+   64  ls -lrt
+   65  cd deployment/
+   66  touch deployment-definition.yml
+   67  ls -lrt
+   68  cd ../pod/
+   69  ls -lrt
+   70  touch pod-definition.yml
+   71  pwd
+   72  ls -lrt
+   73  cd ../replicaset/
+   74  pwd
+   75  ls -lrt
+   76  touch replicaset-definition.yml
+   77  pwd
+   78  cd ../
+   79  pwd
+   80  tree
+   81  sudo apt-get install tree
+   82  tree 
+   83  cd deployment/
+   84  ls -lrt
+   85  cat deployment-definition.yml 
+   86  rm -f deployment-definition.yml 
+   87  ls -lrt
+   88  kubectl create -f deployment-definition.yml
+   89  touch deployment-definition.yml
+   90  kubectl create -f deployment-definition.yml
+   91  vi deployment-definition.yml 
+   92  kubectl create -f deployment-definition.yml
+   93  kubectl get all
+   94  hostname -I
+   95  curl 172.31.21.128
+   96  kubectl describe deployment
+   

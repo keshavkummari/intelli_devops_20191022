@@ -4,7 +4,8 @@
 sudo apt-get update -y 
 
 # Download, Install & Configure Utility Softwares
-sudo apt-get install vim curl unzip wget elinks apt-transport-https -y 
+sudo apt-get install vim curl unzip wget  -y 
+sudo apt-get install apt-transport-https -y 
 
 # Install Docker on Master and Nodes
 sudo apt-get install docker.io -y
@@ -20,4 +21,7 @@ sudo apt-get update -y
 
 # Install Kubeadm on Master and Worker Nodes 
 sudo apt-get install kubeadm -y 
+
+kubectl create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
 
