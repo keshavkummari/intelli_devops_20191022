@@ -1,0 +1,49 @@
+
+ubuntu@jenkins:~$ history
+
+    2  exec bash
+    3  hostname
+    4  hostname -I
+    5  # 172.31.40.131 jenkins.devops.com
+    6  sudo vi /etc/hosts
+
+sudo hostnamectl set-hostname "jenkins.devops.com"
+sudo hostnamectl set-hostname "sonar.devops.com"
+sudo hostnamectl set-hostname "jfrog.devops.com"
+sudo hostnamectl set-hostname "tomcat.devops.com"
+sudo apt-get update 
+sudo apt-get install git vim curl unzip elinks wget -y
+sudo apt-get install docker.io -y
+sudo apt-get install openjdk-8-jdk -y
+sudo apt-get install maven -y
+
+
+# Java Home Path:
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+# Maven Home Path:
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<role rolename="admin-manager"/>
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="admin" password="redhat@123" roles="admin-gui,admin-script,admin-manager,manager-gui,manager-script"/>
+
+release:clean release:prepare release:perform 
+
+https://hub.docker.com/r/goodrainapps/artifactory-oss
+https://hub.docker.com/r/bitnami/sonarqube
+
+<properties>
+  <sonar.projectKey>devsecops01</sonar.projectKey>
+  <sonar.organization>devopssonar01</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>4f1280d8c260dc269078ed8a906a62ad4a83c877</sonar.login>
+</properties>
+
+mvn verify sonar:sonar
+
+https://jenkins.io/doc/book/pipeline/

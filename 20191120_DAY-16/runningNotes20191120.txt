@@ -1,0 +1,19 @@
+
+Agenda:
+
+1. Jenkins
+2. Jfrog 
+3. SonarQube
+4. Tomcat 
+5. Maven and Jfrog Integration
+6. Maven and SonarQube Integration 
+7. Various Types of Jobs in Jenkins
+
+<properties>
+  <sonar.projectKey>Intelli</sonar.projectKey>
+  <sonar.organization>intellipaat</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>7dfffa98f52591a72c3fab91c5fb73193c21769e</sonar.login>
+</properties>
+
+mvn verify sonar:sonar
