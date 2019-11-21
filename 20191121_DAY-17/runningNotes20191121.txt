@@ -1,0 +1,146 @@
+Agenda:
+
+1. Selenium
+2. Puppet
+
+Testing :
+
+Idea -------------------------------------> Production (Users/Customers)
+
+https://intellipaat.com/
+
+Domain : Any 
+
+Product Owner:
+Developers:
+QA:
+Designers:
+Ops:
+
+Continuous Testing : Make sure that our system is Bug/Defect Free 
+
+Types of Software Testing :
+
+    1. Manual Testing :
+        - Tests cases are executed manually
+        - Less accurate
+        - More suitable when test cases are supposed to run only once or twice 
+        - More suitable when testing for user experience 
+
+    2. Automated Testing :
+        - Tests cases are executed automatically
+        - More accurate 
+        - More suitable when test cases are run repeatedly
+        - Suitable for scenarios when testing is functionality based
+     
+Types of Vendors in Testing:
+
+1. Selenium 
+2. Appium 
+3. cucumber 
+4. Test Studio 
+
+1. Selenium:
+    - Portable Framework for testing web applications
+    - Playback tool
+    - Jason Huggins 
+    - 2004
+    - JavaScriptTestRunner and donated it to the Open-Source Community 
+    - Selenium Core 
+
+2. Selenium:
+    - Selenium RC 
+    - Selenium IDE 
+    - Selenium Grid
+    - Selenium WebDriver 
+
+3. Selenium : Version-3 
+
+#---------------------------------------------------------------------#
+
+What is Maven?
+
+    - Build Automation Tool 
+    - Java Projects 
+    - Maven Deals with 2 aspects:
+        1. It describes How a Software is Built
+        2. It describes it's dependencies 
+
+Why do we need Maven?
+    - Download dependencies for our project 
+    - POM.xml 
+    - dependencies to be downloaded are included inside a POM.xml 
+    - Update required dependencies part of POM.xml file 
+
+
+Integration of Selenium with Maven :
+
+    1. Install Java1.8 
+    2. Download & Install Eclipse
+    3. Create a Maven Project 
+    4. Update the POM.xml file for dependencies
+
+Creating Automated Tests:
+
+    STEP-1 : Find Element
+    STEP-2 : Perform Action 
+    STEP-3 : Testing & Reporting
+
+STEP-1 : Find Element 
+
+    Go to Browser ---> RightClick ---> Select "Inspect"
+
+    1. ID 
+    2. Name 
+    3. Class Name 
+    4. Tag Name 
+    5. Link Text 
+    6. Partial Link Text 
+    7. XPATH 
+
+Syntax:
+    WebElement button= driver.findElement(By.class("CwaK9"));
+
+STEP-2 : Perform Action 
+1. Click() : Used to click on the link and wait for page load to complete before proceeding to the next command 
+2. sendKeys() : Used to enter values onto text boxes 
+3. Clear() : Used to clear text boxes of it's current value 
+4. Submit() : WebDriver will automatically trigger the Submit function of the form where that element belongs to 
+
+Syntax:
+
+WebElement button = driver.findElement(By.class("Cwak9")).click();
+
+STEP-3 : Testing & Reporting (TestNG)
+    What is TestNG ?
+        - Automated testing Framework
+        - NG stands for Next Generation
+        - It is a testing Framework inspired from JUnit and NUnit
+        - Addtional functionalities then JUnit and NUnit
+
+    Features of TestNG : 
+        - Easy to create test cases
+        - Test cases can be grouped and prioritized more easily
+        - It supports parameterzation
+        - Data-Driven Testing using DataProviders
+        - It generates HTML reports 
+        - Parallel test execution is possible 
+        - It readily supports Integration with other tools & plugins:
+            - IDE : Eclipse 
+            - Build Tools: Ant, Maven etc.. 
+
+
+Example Python Selenium Code :
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+user_name = "YOUR EMAILID"
+password = "YOUR PASSWORD"
+driver = webdriver.Firefox()
+driver.get("https://www.facebook.com")
+element = driver.find_element_by_id("email")
+element.send_keys(user_name)
+element = driver.find_element_by_id("pass")
+element.send_keys(password)
+element.send_keys(Keys.RETURN)
+element.close()
