@@ -1,0 +1,35 @@
+Agenda:
+
+Configuration Management Tool:
+
+Ansible : 
+    - No Agent 
+    - Push Based
+    - OpenSource
+
+Puppet  :
+    - Agent 
+    - PUll Based
+    - OpenSource
+    - Ruby 
+
+Puppet Setup:
+
+1. Puppet Master 
+
+2. Puppet Agent1
+
+
+Configuration Management Features:
+    1. Automation
+    2. Consistency
+    3. Software Updates
+    4. Software Rollback 
+
+Key Features of Puppet:
+    1. Large User Base 
+    2. Very Big OpenSource Community
+    3. Documentation
+    4. Cross Platform 
+    
+
