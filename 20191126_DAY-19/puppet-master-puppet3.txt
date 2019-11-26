@@ -1,0 +1,40 @@
+
+[root@puppet manifests]# history
+    1  cd
+    2  hostnamectl set-hostname "puppet.devops.com"
+    3  exec bash
+    4  hostname
+    5  hostname -I
+    6  # 172.31.42.142 puppet.devops.com 
+    7  vi /etc/hosts
+    8  hostname
+    9  hostname -I
+   10  cat /etc/hosts
+   11  vi /etc/hosts
+   12  yum update -y
+   13  yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+   14  ls -lrt /etc/yum.repos.d/puppetlabs.repo
+   15  yum -y install puppet-server
+   16  ls -lrt /etc/puppet/puppet.conf 
+   17  vi /etc/puppet/puppet.conf 
+   18  sudo -u puppet puppet master --no-daemonize--verbose
+   19  sudo -u puppet puppet master --no-daemonize --verbose
+   20  systemctl status puppetmaster
+   21  systemctl enable puppetmaster
+   22  systemctl status puppetmaster
+   23  systemctl start puppetmaster
+   24  systemctl status puppetmaster
+   25  puppet cert list
+   26  puppet cert sign client1.devops.com
+   27  pwd
+   28  hostname
+   29  ls -lrt /etc/puppet/manifests/
+   30  ls -lrt /etc/puppet/
+   31  ls -lrt /etc/puppet/manifests/
+   32  cd /etc/puppet/manifests/
+   33  ls -lrt
+   34  vi site.pp
+   35  cat site.pp 
+   36  vi site.pp 
+   37  cat site.pp 
+   38  history

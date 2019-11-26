@@ -1,0 +1,35 @@
+[root@client1 ~]# history
+    1  cd
+    2  hostnamectl set-hostname "client1.devops.com"
+    3  exec bash
+    4  hostname
+    5  hostname -I
+    6  # 172.31.39.177 client1.devops.com 
+    7  vi /etc/hosts
+    8  cat /etc/hosts
+    9  yum update -y
+   10  yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+   11  ls -lrt /etc/yum.repos.d/puppetlabs.repo
+   12  yum install puppet -y
+   13  vi /etc/puppet/puppet.conf 
+   14  puppet agent -t
+   15  systemctl status puppet
+   16  systemctl enable puppet
+   17  systemctl start puppet
+   18  systemctl enable puppet
+   19  systemctl status puppet
+   20  puppet agent --fingerprint
+   21  pwd
+   22  ls -lrt /etc/motd
+   23  cat /etc/motd
+   24  systemctl status postfix
+   25  puppet agent -t
+   26  ls -lrt /etc/motd
+   27  cat /etc/motd
+   28  systemctl status postfix
+   29  puppet agent -t
+   30  ls -lrt /etc/motd
+   31  cat /etc/motd
+   32  systemctl status postfix
+   33  history
+[root@client1 ~]# 

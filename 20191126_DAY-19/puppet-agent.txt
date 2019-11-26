@@ -1,0 +1,327 @@
+Last login: Tue Nov 26 06:51:12 on ttys003
+keshavkummari@Keshavs-MacBook-Pro Downloads % pwd
+/Users/keshavkummari/Downloads
+keshavkummari@Keshavs-MacBook-Pro Downloads % ssh -i "mumbai_devops.pem" ubuntu@ec2-13-233-224-168.ap-south-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-233-224-168.ap-south-1.compute.amazonaws.com (13.233.224.168)' can't be established.
+ECDSA key fingerprint is SHA256:/eEmoCvj2QNeSXvAdzdV4kW/SSSABLgIuS+Rtusa5I8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-13-233-224-168.ap-south-1.compute.amazonaws.com,13.233.224.168' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-1051-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue Nov 26 01:53:35 UTC 2019
+
+  System load:  0.03              Processes:           108
+  Usage of /:   10.9% of 9.63GB   Users logged in:     0
+  Memory usage: 4%                IP address for eth0: 172.31.39.125
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-39-125:~$ 
+ubuntu@ip-172-31-39-125:~$ sudo hostnamectl set-hostname "puppet-agent.devops.com"
+ubuntu@ip-172-31-39-125:~$ exec bash
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ hostname
+puppet-agent.devops.com
+ubuntu@puppet-agent:~$ hostname -I
+172.31.39.125 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo vi /etc/hosts
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo apt-get update
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Hit:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic InRelease
+Get:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:5 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [574 kB]
+Get:6 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [8570 kB]
+Get:7 http://security.ubuntu.com/ubuntu bionic-security/main Translation-en [190 kB]
+Get:8 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [13.2 kB]
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/restricted Translation-en [4292 B]       
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [622 kB]         
+Get:11 http://security.ubuntu.com/ubuntu bionic-security/universe Translation-en [207 kB]        
+Get:12 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [5904 B]      
+Get:13 http://security.ubuntu.com/ubuntu bionic-security/multiverse Translation-en [2568 B] 
+Get:14 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic/universe Translation-en [4941 kB]    
+Get:15 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [151 kB]
+Get:16 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic/multiverse Translation-en [108 kB]
+Get:17 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [797 kB]
+Get:18 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main Translation-en [283 kB]
+Get:19 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [22.0 kB]
+Get:20 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/restricted Translation-en [6128 B]
+Get:21 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [1028 kB]
+Get:22 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/universe Translation-en [317 kB]
+Get:23 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [8556 B]
+Get:24 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/multiverse Translation-en [4044 B]
+Get:25 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [2512 B]
+Get:26 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports/main Translation-en [1644 B]
+Get:27 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [4028 B]
+Get:28 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports/universe Translation-en [1856 B]
+Fetched 18.1 MB in 5s (3384 kB/s)                                  
+Reading package lists... Done
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo apt-get install ntp ntpdate -y
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libopts25 sntp
+Suggested packages:
+  ntp-doc
+The following NEW packages will be installed:
+  libopts25 ntp ntpdate sntp
+0 upgraded, 4 newly installed, 0 to remove and 52 not upgraded.
+Need to get 837 kB of archives.
+After this operation, 2576 kB of additional disk space will be used.
+Get:1 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic/universe amd64 libopts25 amd64 1:5.18.12-4 [58.2 kB]
+Get:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 ntp amd64 1:4.2.8p10+dfsg-5ubuntu7.1 [640 kB]
+Get:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 ntpdate amd64 1:4.2.8p10+dfsg-5ubuntu7.1 [51.8 kB]
+Get:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 sntp amd64 1:4.2.8p10+dfsg-5ubuntu7.1 [86.9 kB]
+Fetched 837 kB in 1s (827 kB/s) 
+Selecting previously unselected package libopts25:amd64.
+(Reading database ... 56531 files and directories currently installed.)
+Preparing to unpack .../libopts25_1%3a5.18.12-4_amd64.deb ...
+Unpacking libopts25:amd64 (1:5.18.12-4) ...
+Selecting previously unselected package ntp.
+Preparing to unpack .../ntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Selecting previously unselected package ntpdate.
+Preparing to unpack .../ntpdate_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking ntpdate (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Selecting previously unselected package sntp.
+Preparing to unpack .../sntp_1%3a4.2.8p10+dfsg-5ubuntu7.1_amd64.deb ...
+Unpacking sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Setting up ntpdate (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Setting up libopts25:amd64 (1:5.18.12-4) ...
+Setting up sntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Setting up ntp (1:4.2.8p10+dfsg-5ubuntu7.1) ...
+Created symlink /etc/systemd/system/network-pre.target.wants/ntp-systemd-netif.path → /lib/systemd/system/ntp-systemd-netif.path.
+Created symlink /etc/systemd/system/multi-user.target.wants/ntp.service → /lib/systemd/system/ntp.service.
+ntp-systemd-netif.service is a disabled or a static unit, not starting it.
+Processing triggers for systemd (237-3ubuntu10.29) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for ureadahead (0.100.0-21) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+ubuntu@puppet-agent:~$ sudo ntpdate -u 0.ubuntu.pool.ntp.org
+26 Nov 01:56:50 ntpdate[3107]: adjust time server 139.59.55.93 offset 0.003788 sec
+ubuntu@puppet-agent:~$ sudo timedatectl set-timezone Asia/Kolkata
+ubuntu@puppet-agent:~$ date
+Tue Nov 26 07:28:18 IST 2019
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ hostname
+puppet-agent.devops.com
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# Puppet Master 
+172.31.38.25 puppet-master.devops.com
+
+# Puppet Agent
+172.31.39.125 puppet-agent.devops.com
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ date
+Tue Nov 26 07:28:57 IST 2019
+ubuntu@puppet-agent:~$ sudo systemctl status ntpd
+Unit ntpd.service could not be found.
+ubuntu@puppet-agent:~$ sudo systemctl status ntp
+● ntp.service - Network Time Service
+   Loaded: loaded (/lib/systemd/system/ntp.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2019-11-26 07:26:06 IST; 3min 19s ago
+     Docs: man:ntpd(8)
+ Main PID: 2637 (ntpd)
+    Tasks: 2 (limit: 4703)
+   CGroup: /system.slice/ntp.service
+           └─2637 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 111:115
+
+Nov 26 07:26:11 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 185.53.93.157
+Nov 26 07:26:11 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 194.55.15.222
+Nov 26 07:26:11 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 91.189.89.198
+Nov 26 07:26:12 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 91.189.89.199
+Nov 26 07:26:12 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 37.252.187.111
+Nov 26 07:26:12 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 195.113.20.2
+Nov 26 07:26:13 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 91.189.91.157
+Nov 26 07:26:13 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 74.6.168.73
+Nov 26 07:26:13 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 2606:4700:f1::1
+Nov 26 07:26:14 puppet-agent.devops.com ntpd[2637]: Soliciting pool server 91.189.94.4
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo systemctl restart ntp
+ubuntu@puppet-agent:~$ sudo systemctl status ntp
+● ntp.service - Network Time Service
+   Loaded: loaded (/lib/systemd/system/ntp.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2019-11-26 07:29:33 IST; 1s ago
+     Docs: man:ntpd(8)
+  Process: 3333 ExecStart=/usr/lib/ntp/ntp-systemd-wrapper (code=exited, status=0/SUCCESS)
+ Main PID: 3353 (ntpd)
+    Tasks: 2 (limit: 4703)
+   CGroup: /system.slice/ntp.service
+           └─3353 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 111:115
+
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: leapsecond file ('/usr/share/zoneinfo/leap-seconds.list'): good hash signat
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: leapsecond file ('/usr/share/zoneinfo/leap-seconds.list'): loaded, expire=2
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen and drop on 0 v6wildcard [::]:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen and drop on 1 v4wildcard 0.0.0.0:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen normally on 2 lo 127.0.0.1:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen normally on 3 eth0 172.31.39.125:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen normally on 4 lo [::1]:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listen normally on 5 eth0 [fe80::57:15ff:fea5:ea30%2]:123
+Nov 26 07:29:33 puppet-agent.devops.com ntpd[3353]: Listening on routing socket on fd #22 for interface updates
+Nov 26 07:29:34 puppet-agent.devops.com ntpd[3353]: Soliciting pool server 157.119.108.165
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo apt-get update
+Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic InRelease
+Hit:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates InRelease
+Hit:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports InRelease
+Reading package lists... Done
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
+--2019-11-26 07:31:17--  https://apt.puppetlabs.com/puppet6-release-bionic.deb
+Resolving apt.puppetlabs.com (apt.puppetlabs.com)... 13.227.143.110, 13.227.143.78, 13.227.143.75, ...
+Connecting to apt.puppetlabs.com (apt.puppetlabs.com)|13.227.143.110|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11736 (11K) [application/x-debian-package]
+Saving to: ‘puppet6-release-bionic.deb’
+
+puppet6-release-bionic.deb      100%[======================================================>]  11.46K  --.-KB/s    in 0s      
+
+2019-11-26 07:31:17 (303 MB/s) - ‘puppet6-release-bionic.deb’ saved [11736/11736]
+
+ubuntu@puppet-agent:~$ ls -lrt
+total 12
+-rw-rw-r-- 1 ubuntu ubuntu 11736 Jun 20 00:11 puppet6-release-bionic.deb
+ubuntu@puppet-agent:~$ sudo dpkg -i puppet6-release-bionic.deb 
+Selecting previously unselected package puppet6-release.
+(Reading database ... 56619 files and directories currently installed.)
+Preparing to unpack puppet6-release-bionic.deb ...
+Unpacking puppet6-release (6.0.0-5bionic) ...
+Setting up puppet6-release (6.0.0-5bionic) ...
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo apt-get update
+Get:1 http://apt.puppetlabs.com bionic InRelease [85.3 kB]
+Hit:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic InRelease          
+Hit:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates InRelease   
+Hit:4 http://security.ubuntu.com/ubuntu bionic-security InRelease        
+Hit:5 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports InRelease
+Get:6 http://apt.puppetlabs.com bionic/puppet6 amd64 Packages [35.5 kB]  
+Get:7 http://apt.puppetlabs.com bionic/puppet6 all Packages [14.8 kB]
+Fetched 136 kB in 1s (113 kB/s)    
+Reading package lists... Done
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo apt-get install puppet-agent
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  puppet-agent
+0 upgraded, 1 newly installed, 0 to remove and 52 not upgraded.
+Need to get 20.1 MB of archives.
+After this operation, 116 MB of additional disk space will be used.
+Get:1 http://apt.puppetlabs.com bionic/puppet6 amd64 puppet-agent amd64 6.11.1-1bionic [20.1 MB]
+Fetched 20.1 MB in 0s (49.3 MB/s)     
+Selecting previously unselected package puppet-agent.
+(Reading database ... 56624 files and directories currently installed.)
+Preparing to unpack .../puppet-agent_6.11.1-1bionic_amd64.deb ...
+Unpacking puppet-agent (6.11.1-1bionic) ...
+Setting up puppet-agent (6.11.1-1bionic) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/puppet.service → /lib/systemd/system/puppet.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/pxp-agent.service → /lib/systemd/system/pxp-agent.service.
+Removed /etc/systemd/system/multi-user.target.wants/pxp-agent.service.
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo vi /etc/puppetlabs/puppet/puppet.conf 
+
+[No write since last change]
+puppet-agent.devops.com
+
+Press ENTER or type command to continue
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ cat /etc/puppetlabs/puppet/puppet.conf
+# This file can be used to override the default puppet settings.
+# See the following links for more details on what settings are available:
+# - https://puppet.com/docs/puppet/latest/config_important_settings.html
+# - https://puppet.com/docs/puppet/latest/config_about_settings.html
+# - https://puppet.com/docs/puppet/latest/config_file_main.html
+# - https://puppet.com/docs/puppet/latest/configuration.html
+
+[main]
+certname = puppet-agent.devops.com
+server = puppet-agent.devops.com
+environment = production
+runinterval = 15m
+ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ # sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo systemctl status puppet
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ # sudo systemctl enable puppet
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ # sudo systemctl start puppet
+ubuntu@puppet-agent:~$ 
+ubuntu@puppet-agent:~$ sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+Notice: /Service[puppet]/ensure: ensure changed 'stopped' to 'running'
+service { 'puppet':
+  ensure => 'running',
+  enable => 'true',
+}
+ubuntu@puppet-agent:~$ sudo systemctl status puppet
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2019-11-26 07:45:16 IST; 7s ago
+ Main PID: 5060 (puppet)
+    Tasks: 2 (limit: 4703)
+   CGroup: /system.slice/puppet.service
+           └─5060 /opt/puppetlabs/puppet/bin/ruby /opt/puppetlabs/puppet/bin/puppet agent --no-daemonize
+
+Nov 26 07:45:16 puppet-agent.devops.com systemd[1]: Started Puppet agent.
+Nov 26 07:45:17 puppet-agent.devops.com puppet-agent[5060]: Failed to connect to https://puppet-agent.devops.com:8140/puppet-ca
+Nov 26 07:45:17 puppet-agent.devops.com puppet-agent[5060]: Wrapped exception:
+Nov 26 07:45:17 puppet-agent.devops.com puppet-agent[5060]: Failed to open TCP connection to puppet-agent.devops.com:8140 (Conn
+Nov 26 07:45:17 puppet-agent.devops.com puppet-agent[5060]: No more routes to ca

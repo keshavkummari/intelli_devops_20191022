@@ -1,0 +1,18 @@
+
+
+[root@puppet ~]# sudo -u puppet puppet master --no-daemonize --verbose
+Info: Creating a new SSL key for ca
+Info: Creating a new SSL certificate request for ca
+Info: Certificate Request fingerprint (SHA256): A2:C6:DD:99:06:71:57:F2:6F:45:02:82:F2:E1:4B:42:EB:4C:D6:8E:62:FC:96:4B:2C:59:98:33:0D:00:15:2C
+Notice: Signed certificate request for ca
+Info: Creating a new certificate revocation list
+Info: Creating a new SSL key for puppet.devops.com
+Info: csr_attributes file loading from /var/lib/puppet/.puppet/csr_attributes.yaml
+Info: Creating a new SSL certificate request for puppet.devops.com
+Info: Certificate Request fingerprint (SHA256): CA:43:1B:22:B1:63:DA:31:05:B7:71:F1:BE:18:77:C5:62:D0:54:23:29:F0:B3:19:B1:36:7F:7A:53:A9:87:BE
+Notice: puppet.devops.com has a waiting certificate request
+Notice: Signed certificate request for puppet.devops.com
+Notice: Removing file Puppet::SSL::CertificateRequest puppet.devops.com at '/var/lib/puppet/.puppet/ssl/ca/requests/puppet.devops.com.pem'
+Notice: Removing file Puppet::SSL::CertificateRequest puppet.devops.com at '/var/lib/puppet/.puppet/ssl/certificate_requests/puppet.devops.com.pem'
+Notice: Starting Puppet master version 3.8.7
+^CNotice: Caught INT; exiting
